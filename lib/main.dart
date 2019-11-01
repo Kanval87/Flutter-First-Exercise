@@ -18,8 +18,41 @@ class MyApp extends StatelessWidget {
           body: Container(
             color: Theme.of(context).highlightColor,
             alignment: AlignmentDirectional.topStart,
-            child: Item(),
+            child: ItemManager(),
           )),
+    );
+  }
+}
+
+class ItemManager extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _ItemManagerState();
+  }
+}
+
+class _ItemManagerState extends State<ItemManager> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Row(
+      children: <Widget>[
+        Container(
+          alignment: AlignmentDirectional.centerStart,
+          child: FormField(
+
+          ),
+        ),
+        Container(
+          alignment: AlignmentDirectional.centerEnd,
+          child: RaisedButton(
+            onPressed: () {},
+            child: Text('Press Me'),
+            color: Theme.of(context).primaryColor,
+          ),
+        )
+      ],
     );
   }
 }
