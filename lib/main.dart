@@ -33,6 +33,8 @@ class ItemManager extends StatefulWidget {
 }
 
 class _ItemManagerState extends State<ItemManager> {
+  List<String> _items = ['Item 1'];
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -43,7 +45,7 @@ class _ItemManagerState extends State<ItemManager> {
           hintText: 'Enter Text',
           labelText: 'Name *'),
       controller: TextEditingController(
-        text: 'Hello',
+        text: '',
       ),
       onChanged: (value) {
         inputText = value;
@@ -59,12 +61,31 @@ class _ItemManagerState extends State<ItemManager> {
           alignment: AlignmentDirectional.centerEnd,
           child: RaisedButton(
             onPressed: () {
-              print('TextFormField value -> : ' + inputText);
-              textFormField.controller.clear();
+              setState(() {
+                _items.add(inputText);
+                print('TextFormField value -> : ' + inputText);
+                textFormField.controller.clear();
+              });
             },
             child: Text('Press Me'),
             color: Theme.of(context).primaryColor,
           ),
+        ),
+        Container(
+          alignment: AlignmentDirectional.centerEnd,
+          child: RaisedButton(
+            onPressed: () {
+              setState(() {
+                _items.clear();
+                textFormField.controller.clear();
+              });
+            },
+            child: Text('Clear list'),
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+        Column(
+          children: _items.map((element) => Item(itemName: element)).toList(),
         )
       ],
     );
