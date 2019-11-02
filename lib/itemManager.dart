@@ -62,10 +62,32 @@ class _ItemManagerState extends State<ItemManager> {
             color: Theme.of(context).primaryColor,
           ),
         ),
-        Column(
-          children: _items.map((element) => Item(itemName: element)).toList(),
+        Expanded(
+          child: ItemList(),
         )
       ],
     );
   }
+}
+
+class ItemList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return _myListView(context);
+  }
+}
+
+Widget _myListView(BuildContext context) {
+  return ListView.builder(
+    itemCount: 100,
+    itemBuilder: (context, index) {
+      return ListTile(
+        title: Text(
+          'row -> $index',
+          style: TextStyle(color: Theme.of(context).primaryColor),
+        ),
+      );
+    },
+  );
 }
