@@ -36,18 +36,32 @@ class _ItemManagerState extends State<ItemManager> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Row(
+    String inputText = '';
+    TextFormField textFormField = TextFormField(
+      decoration: const InputDecoration(
+          icon: Icon(Icons.person),
+          hintText: 'Enter Text',
+          labelText: 'Name *'),
+      controller: TextEditingController(
+        text: 'Hello',
+      ),
+      onChanged: (value) {
+        inputText = value;
+      },
+    );
+    return Column(
       children: <Widget>[
         Container(
           alignment: AlignmentDirectional.centerStart,
-          child: FormField(
-
-          ),
+          child: textFormField,
         ),
         Container(
           alignment: AlignmentDirectional.centerEnd,
           child: RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              print('TextFormField value -> : ' + inputText);
+              textFormField.controller.clear();
+            },
             child: Text('Press Me'),
             color: Theme.of(context).primaryColor,
           ),
