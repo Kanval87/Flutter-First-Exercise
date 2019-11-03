@@ -11,7 +11,7 @@ class ItemManager extends StatefulWidget {
 }
 
 class _ItemManagerState extends State<ItemManager> {
-  List<String> _items = ['Item 1'];
+  List<String> _items = [];
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class _ItemManagerState extends State<ItemManager> {
                     content: new Text("Please enter some text in Input Bar."),
                     backgroundColor: Theme.of(context).errorColor,
                     behavior: SnackBarBehavior.floating,
-                    duration: Duration(milliseconds: 200),
+                    duration: Duration(milliseconds: 500),
                   ));
                   // ERROR : Reported Issue : https://github.com/PonnamKarthik/FlutterToast/issues/9#issuecomment-549046987
                   // Fluttertoast.showToast(
