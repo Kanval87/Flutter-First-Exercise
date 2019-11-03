@@ -28,6 +28,12 @@ class _ItemManagerState extends State<ItemManager> {
       onChanged: (value) {
         inputText = value;
       },
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'Please enter some text';
+        }
+        return null;
+      },
     );
     return Column(
       children: <Widget>[
@@ -40,9 +46,26 @@ class _ItemManagerState extends State<ItemManager> {
           child: RaisedButton(
             onPressed: () {
               setState(() {
-                _items.add(inputText);
-                print('TextFormField value -> : ' + inputText);
-                textFormField.controller.clear();
+                if (inputText.isNotEmpty) {
+                  _items.add(inputText);
+                  print('TextFormField value -> : ' + inputText);
+                  textFormField.controller.clear();
+                } else {
+                  Scaffold.of(context).showSnackBar(new SnackBar(
+                    content: new Text("Please enter some text in Input Bar."),
+                    backgroundColor: Theme.of(context).errorColor,
+                    behavior: SnackBarBehavior.floating,
+                  ));
+                  // ERROR : Reported Issue : https://github.com/PonnamKarthik/FlutterToast/issues/9#issuecomment-549046987
+                  // Fluttertoast.showToast( 
+                  //     msg: 'Please enter some text in Input Bar.',
+                  //     toastLength: Toast.LENGTH_SHORT,
+                  //     gravity: ToastGravity.CENTER,
+                  //     timeInSecForIos: 1,
+                  //     backgroundColor: Theme.of(context).errorColor,
+                  //     textColor: Theme.of(context).textSelectionColor,
+                  //     fontSize: 16);
+                }
               });
             },
             child: Text('Press Me'),
