@@ -87,12 +87,13 @@ class _ItemManagerState extends State<ItemManager> {
           ),
         ),
         Expanded(
-            // child: ItemList(),
-            child: Container(
-          child: ListView(
-            children: _items.map((element) => Item(itemName: element)).toList(),
+          child: Container(
+            child: ListView(
+              children:
+                  _items.map((element) => Item(itemName: element)).toList(),
+            ),
           ),
-        ))
+        ),
       ],
     );
   }
