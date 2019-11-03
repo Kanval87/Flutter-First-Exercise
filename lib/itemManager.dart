@@ -55,9 +55,10 @@ class _ItemManagerState extends State<ItemManager> {
                     content: new Text("Please enter some text in Input Bar."),
                     backgroundColor: Theme.of(context).errorColor,
                     behavior: SnackBarBehavior.floating,
+                    duration: Duration(milliseconds: 200),
                   ));
                   // ERROR : Reported Issue : https://github.com/PonnamKarthik/FlutterToast/issues/9#issuecomment-549046987
-                  // Fluttertoast.showToast( 
+                  // Fluttertoast.showToast(
                   //     msg: 'Please enter some text in Input Bar.',
                   //     toastLength: Toast.LENGTH_SHORT,
                   //     gravity: ToastGravity.CENTER,
